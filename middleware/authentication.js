@@ -14,7 +14,7 @@ const authenticateUser = async (req, res, next) => {
         req.user = { userId, email };
         next();
     } catch (error) {
-        throw new Unauthenticated("Authentication Invalid");
+        throw new Unauthenticated("Not Authenticated");
     }
 };
 

@@ -23,7 +23,7 @@ const EventSchema = mongoose.Schema(
                 ],
                 message: "{VALUE} is not a valid day of the week",
             },
-            default: "Saturday",
+            default: "saturday",
         },
         userId: {
             type: mongoose.Types.ObjectId,
