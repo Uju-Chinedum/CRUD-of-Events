@@ -44,10 +44,6 @@ const UserSchema = mongoose.Schema({
     },
 });
 
-UserSchema.methods.passwordConfirm = function () {
-    return this.password === this.confirmPassword;
-};
-
 UserSchema.pre("save", async function () {
     if (!this.isModified("password") || !this.isModified("confirmPassword"))
         return;
