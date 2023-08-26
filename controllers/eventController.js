@@ -7,11 +7,13 @@ const createEvent = async (req, res) => {
   req.body.userId = req.user.userId;
   const event = await Event.create(req.body);
 
-  res.status(StatusCodes.OK).json({ event });
+  res.status(StatusCodes.CREATED).json({ event });
 };
 
 const getAllEvents = async (req, res) => {
   const events = await Event.find({});
+
+  res.status(StatusCodes.OK).json({ events });
 };
 
 const getEvent = async (req, res) => {
@@ -27,18 +29,22 @@ const getEvent = async (req, res) => {
 
 const deleteEventFromDayOfWeek = async (req, res) => {
   const { dayOfWeek } = req.params;
+  const { userId } = req.user;
 
-  const events = Event.find({ dayOfWeek });
-  if (!events) {
-    throw new BadRequest(`No event scheduled for ${dayOfWeek}`);
+  const events = await Event.find({ dayOfWeek, userId });
+
+  if (events.length === 0) {
+    throw new NotFound(
+      `No event scheduled for ${dayOfWeek} by user with id: ${userId}`
+    );
   }
 
-  confirmUser(req.user.userId, events.userId);
-  await events.remove();
+  const deletedEvents = await Event.deleteMany({ dayOfWeek, userId });
 
-  res
-    .status(StatusCodes.OK)
-    .json({ msg: "List of deleted events", deletedEvents: [events] });
+  res.status(StatusCodes.OK).json({
+    msg: `List of deleted events for ${dayOfWeek}`,
+    deletedEvents: events,
+  });
 };
 
 const deleteEvent = async (req, res) => {
@@ -49,7 +55,10 @@ const deleteEvent = async (req, res) => {
     throw new NotFound(`No event found for this id: ${eventId}`);
   }
 
-  await event.remove();
+  confirmUser(req.user.userId, event.userId);
+
+  await Event.deleteOne({ _id: eventId });
+
   res.status(StatusCodes.NO_CONTENT).send("Event deleted");
 };
 
