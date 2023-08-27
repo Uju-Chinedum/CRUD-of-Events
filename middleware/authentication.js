@@ -4,10 +4,7 @@ const { Unauthenticated } = require("../errors");
 const authenticateUser = async (req, res, next) => {
   const authHeader = req.headers.authorization;
   if (!authHeader || !authHeader.startsWith("Bearer ")) {
-    throw new Unauthenticated(
-      "Authentication Invalid",
-      "Please provide Bearer Token"
-    );
+    throw new Unauthenticated("Unauthorized", "Not authenticated");
   }
 
   const token = authHeader.split(" ")[1];
@@ -17,7 +14,7 @@ const authenticateUser = async (req, res, next) => {
     req.user = { userId, email };
     next();
   } catch (error) {
-    throw new Unauthenticated("Not Authenticated", "User not found");
+    throw new Unauthenticated("Unauthorized", "Not authenticated");
   }
 };
 

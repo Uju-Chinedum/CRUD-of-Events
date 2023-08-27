@@ -33,12 +33,18 @@ const login = async (req, res) => {
 
   const user = await User.findOne({ email });
   if (!user) {
-    throw new Unauthenticated("Invalid Email", "Invalid credentials");
+    throw new Unauthenticated("Validation Error", {
+      resource: "email",
+      message: "Invalid email",
+    });
   }
 
   const checkPassword = await user.comparePassword(password);
   if (!checkPassword) {
-    throw new Unauthenticated("Incorrect Password", "Invalid credentials");
+    throw new Unauthenticated("Validation Error", {
+      resource: "password",
+      message: "Invalid password",
+    });
   }
 
   const payload = { userId: user._id, email };
