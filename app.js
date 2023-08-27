@@ -5,6 +5,7 @@ const connectDB = require("./db/connect");
 const notFound = require("./middleware/notFound");
 const errorHandler = require("./middleware/errorHandler");
 const authenticateUser = require("./middleware/authentication");
+const { validateUser, validateEvent } = require("./middleware/validation");
 const userRouter = require("./routes/userRoute");
 const eventRouter = require("./routes/eventRoute");
 
@@ -13,8 +14,8 @@ const port = process.env.PORT || 5000;
 
 app.use(express.json());
 
-app.use("/api/v1/users", userRouter);
-app.use("/api/v1/events", authenticateUser, eventRouter);
+app.use("/api/v1/users", validateUser, userRouter);
+app.use("/api/v1/events", authenticateUser, validateEvent, eventRouter);
 
 app.use(notFound);
 app.use(errorHandler);

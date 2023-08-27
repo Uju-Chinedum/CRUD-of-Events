@@ -13,7 +13,7 @@ const createEvent = async (req, res) => {
 const getAllEvents = async (req, res) => {
   const events = await Event.find({});
 
-  res.status(StatusCodes.OK).json({ events });
+  res.status(StatusCodes.OK).json({ events, count: events.length });
 };
 
 const getEvent = async (req, res) => {
@@ -21,7 +21,10 @@ const getEvent = async (req, res) => {
 
   const event = await Event.findOne({ _id: eventId });
   if (!event) {
-    throw new NotFound(`No event found for this id: ${eventId}`);
+    throw new NotFound(
+      "Event Not Found",
+      `No event found for this id: ${eventId}`
+    );
   }
 
   res.status(StatusCodes.OK).json({ event });
@@ -35,6 +38,7 @@ const deleteEventFromDayOfWeek = async (req, res) => {
 
   if (events.length === 0) {
     throw new NotFound(
+      "Event Not Found",
       `No event scheduled for ${dayOfWeek} by user with id: ${userId}`
     );
   }
@@ -52,7 +56,10 @@ const deleteEvent = async (req, res) => {
 
   const event = await Event.findOne({ _id: eventId });
   if (!event) {
-    throw new NotFound(`No event found for this id: ${eventId}`);
+    throw new NotFound(
+      "Event Not Found",
+      `No event found for this id: ${eventId}`
+    );
   }
 
   confirmUser(req.user.userId, event.userId);

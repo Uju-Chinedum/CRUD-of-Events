@@ -5,10 +5,19 @@ const { BadRequest, Unauthenticated } = require("../errors");
 
 const createUser = async (req, res) => {
   const { password, confirmPassword } = req.body;
+  if (!password || confirmPassword) {
+    throw new BadRequest(
+      "Missing Details",
+      "Please provide password/confirmPassword"
+    );
+  }
 
   const isSamePassword = passwordConfirm(password, confirmPassword);
   if (!isSamePassword) {
-    throw new BadRequest("password does not match confirmPassword");
+    throw new BadRequest(
+      "Invalid Details",
+      "password does not match confirmPassword"
+    );
   }
 
   const user = await User.create(req.body);
@@ -19,17 +28,17 @@ const createUser = async (req, res) => {
 const login = async (req, res) => {
   const { email, password } = req.body;
   if (!email || !password) {
-    throw new BadRequest("Please provide all details");
+    throw new BadRequest("Missing Details", "Please provide all details");
   }
 
   const user = await User.findOne({ email });
   if (!user) {
-    throw new Unauthenticated("Invalid email");
+    throw new Unauthenticated("Invalid Email", "Invalid credentials");
   }
 
   const checkPassword = await user.comparePassword(password);
   if (!checkPassword) {
-    throw new Unauthenticated("Incorrect Password");
+    throw new Unauthenticated("Incorrect Password", "Invalid credentials");
   }
 
   const payload = { userId: user._id, email };
