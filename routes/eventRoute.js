@@ -10,9 +10,9 @@ const { validateEvent } = require("../middleware/validation");
 
 const router = express.Router();
 
-router.route("/").post(validateEvent, createEvent).get(getAllEvents);
+router.route("/:dayOfWeek?").get(getAllEvents).delete(deleteEventFromDayOfWeek);
 
-router.route("/dayOfWeek/:dayOfWeek").delete(deleteEventFromDayOfWeek);
+router.route("/").post(validateEvent, createEvent);
 
 router.route("/:id").get(getEvent).delete(deleteEvent);
 

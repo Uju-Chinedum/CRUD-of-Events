@@ -5,12 +5,6 @@ const { BadRequest, Unauthenticated } = require("../errors");
 
 const createUser = async (req, res) => {
   const { password, confirmPassword } = req.body;
-  // if (!password || !confirmPassword) {
-  //   throw new BadRequest(
-  //     "Missing Details",
-  //     "Please provide password/confirmPassword"
-  //   );
-  // }
 
   const isSamePassword = passwordConfirm(password, confirmPassword);
   if (!isSamePassword) {

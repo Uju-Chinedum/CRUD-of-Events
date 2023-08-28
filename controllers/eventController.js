@@ -1,17 +1,21 @@
 const Event = require("../models/Event");
 const { StatusCodes } = require("http-status-codes");
-const { NotFound, BadRequest } = require("../errors");
+const { NotFound } = require("../errors");
 const { confirmUser } = require("../utils");
 
 const createEvent = async (req, res) => {
-  req.body.userId = req.user.userId;
   const event = await Event.create(req.body);
 
   res.status(StatusCodes.CREATED).json({ event });
 };
 
 const getAllEvents = async (req, res) => {
-  const events = await Event.find({});
+  const { dayOfWeek } = req.params;
+
+  let events = await Event.find({ dayOfWeek });
+  if (events.length === 0) {
+    events = await Event.find({});
+  }
 
   res.status(StatusCodes.OK).json({ events, count: events.length });
 };

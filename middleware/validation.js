@@ -1,5 +1,5 @@
 const joi = require("joi");
-const { StatusCodes } = require("http-status-codes");
+const { BadRequest } = require("../errors");
 
 const userValidationSchema = joi.object({
   firstName: joi.string().required().trim(),
@@ -14,9 +14,7 @@ const userValidationSchema = joi.object({
 const validateUser = (req, res, next) => {
   const { error } = userValidationSchema.validate(req.body);
   if (error) {
-    return res
-      .status(StatusCodes.BAD_REQUEST)
-      .json({ error: error.details[0].message });
+    throw new BadRequest("Validation Error", error.details[0].message);
   }
   next();
 };
@@ -39,11 +37,11 @@ const eventValidationSchema = joi.object({
 });
 
 const validateEvent = (req, res, next) => {
+  req.body.userId = req.user.userId;
+
   const { error } = eventValidationSchema.validate(req.body);
   if (error) {
-    return res
-      .status(StatusCodes.BAD_REQUEST)
-      .json({ error: error.details[0].message });
+    throw new BadRequest("Validation Error", error.details[0].message);
   }
   next();
 };
