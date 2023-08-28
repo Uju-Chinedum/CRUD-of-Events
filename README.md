@@ -43,7 +43,7 @@ The application implements the following routes:
 - **GET /api/v1/events/:id**: Gets a specific event by ID
 - **DELETE /api/v1/events/:id**: Delete an event by ID
 - **GET /api/v1/events/day/:dayOfWeek?**: Gets a specific event by day of week
-- **DELETE /api/v1/events/day/:dayOfWeek?**: Delete a events by day of week
+- **DELETE /api/v1/events/day/:dayOfWeek**: Delete events from day of week
 
 ## Usage
 
