@@ -4,7 +4,8 @@
   "description": "A basic CRUD of users and events",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "nodemon app.js",
+    "test": "npx jest"
   },
   "repository": {
     "type": "git",
