@@ -1,0 +1,143 @@
+openapi: 3.0.0
+info:
+  title: CRUD-of-Events
+  version: 1.0.0
+servers:
+  - url: https://crud-of-events.onrender.com
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+tags:
+  - name: User
+  - name: Event
+paths:
+  /events:
+    post:
+      tags:
+        - Event
+      summary: Create Event
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                dayOfWeek:
+                  type: string
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /events/day/{dayOfWeek}:
+    get:
+      tags:
+        - Event
+      summary: Get All Events for a Day of Week
+      parameters:
+        - name: dayOfWeek
+          in: path
+          required: false   # Make dayOfWeek optional
+          schema:
+            type: string
+          description: The day of the week (e.g., "sunday")
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /events/{id}:
+    get:
+      tags:
+        - Event
+      summary: Get Event by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The ID of the event
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - Event
+      summary: Delete Event by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The ID of the event
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /users/sign-up:
+    post:
+      tags:
+        - User
+      summary: Create User
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                firstName:
+                  type: string
+                lastName:
+                  type: string
+                city:
+                  type: string
+                country:
+                  type: string
+                email:
+                  type: string
+                password:
+                  type: string
+                confirmPassword:
+                  type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /users/sign-in:
+    post:
+      tags:
+        - User
+      summary: Login User
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
