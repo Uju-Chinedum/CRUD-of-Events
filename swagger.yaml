@@ -3,7 +3,7 @@ info:
   title: CRUD-of-Events
   version: 1.0.0
 servers:
-  - url: https://crud-of-events.onrender.com
+  - url: https://crud-of-events.onrender.com/api/v1
 components:
   securitySchemes:
     bearerAuth:
