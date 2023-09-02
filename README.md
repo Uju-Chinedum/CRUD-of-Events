@@ -2,6 +2,8 @@
 
 This repository contains a Node.js and MongoDB application that implements basic CRUD operations for users and events. The users have a register and login functionality. It utilizes the Express.js framework for handling routes, bcrypt.js for password hashing, and JSON Web Token for tokenization and MongoDB for data storage.
 
+You can view the project at <https://crud-of-events.onrender.com>
+
 ## Prerequisites
 
 Befor running the application, make sure you [Node.js (v12 or higher)](https://nodejs.org/en) and [Git](https://git-scm.com/downloads) installed.

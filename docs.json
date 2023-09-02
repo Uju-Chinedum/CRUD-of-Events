@@ -101,13 +101,14 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "https://crud-of-events.onrender.com/api/v1/events/sunday",
+							"raw": "https://crud-of-events.onrender.com/api/v1/events/day/tuesday",
 							"host": [
 								"https://crud-of-events.onrender.com/api/v1"
 							],
 							"path": [
 								"events",
-								"sunday"
+								"day",
+								"tuesday"
 							]
 						}
 					},
@@ -221,7 +222,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"klaus@gmail.com\",\r\n    \"password\": \"originalsecret\"\r\n}",
+							"raw": "{\r\n    \"email\": \"klaus@gmail.com\",\r\n    \"password\": \"originalsecret\"\r\n    // damon@gmail.com, tvdsecret, 64e99aa9010d4e895ab1c1d9\r\n    // klaus@gmail.com, originalsecret, 64e99b09010d4e895ab1c1db\r\n    // test@gmail.com, secret, 64eb0ffad2311791b75bd46c\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"

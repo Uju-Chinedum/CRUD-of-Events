@@ -8,7 +8,6 @@ const cors = require("cors");
 const mongoSanitize = require("express-mongo-sanitize");
 const swagger = require("swagger-ui-express");
 const yaml = require("yamljs");
-const swaggerDocs = yaml.load("./swagger.yaml");
 const connectDB = require("./db/connect");
 const notFound = require("./middleware/notFound");
 const errorHandler = require("./middleware/errorHandler");
@@ -18,6 +17,7 @@ const eventRouter = require("./routes/eventRoute");
 
 const app = express();
 const port = process.env.PORT || 5000;
+const swaggerDocs = yaml.load("./swagger.yaml");
 
 app.set("trust proxy", 1);
 app.use(
@@ -34,9 +34,9 @@ app.use(mongoSanitize());
 app.use(express.json());
 app.use(express.static("./public"));
 
-app.use("/api-docs", swagger.serve, swagger.setup(swaggerDocs));
 app.use("/api/v1/users", userRouter);
 app.use("/api/v1/events", authenticateUser, eventRouter);
+app.use("/api-docs", swagger.serve, swagger.setup(swaggerDocs));
 
 app.use(notFound);
 app.use(errorHandler);

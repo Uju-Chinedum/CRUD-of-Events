@@ -8407,7 +8407,8 @@
             <ul>
               <li><a class=endpoint_menu href=#jump-Event-CreateEvent>Create Event</a>
               <li><a class=endpoint_menu href=#jump-Event-GetAllEvents>Get All Events</a>
-              <li><a class=endpoint_menu href=#jump-Event-DeleteEventFromDayofWeek>Delete Event From Day of Week</a>
+              <li><a class=endpoint_menu href=#jump-Event-DeleteEventFromDayofWeek>Delete Event From Day
+                  of Week</a>
               <li><a class=endpoint_menu href=#jump-Event-GetEvent>Get Event</a>
               <li><a class=endpoint_menu href=#jump-Event-DeleteEvent>Delete Event</a>
             </ul>
@@ -8416,7 +8417,7 @@
               <li><a class=endpoint_menu href=#jump-User-CreateUser>Create User</a>
               <li><a class=endpoint_menu href=#jump-User-LoginUser>Login User</a>
             </ul>
-          &nbsp;
+            &nbsp;
           <li><strong><a href="/api-docs">Test it out with the Swagger Documenetation</a></strong></li>
         </ul>
       </div>
@@ -8435,8 +8436,8 @@
                   <div class=panel-heading><small class="pull-right text-muted">raw</small>
                     <a class=text-success data-toggle=collapse data-parent=#accordion-Event
                       href=#collapse-Event-CreateEvent>
-                      <h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Create Event</strong>
-                        &nbsp;|&nbsp;
+                      <h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Create
+                          Event</strong> &nbsp;|&nbsp;
                         <strong class="request-method border-success">POST</strong>
                         &nbsp;
                         https://crud-of-events.onrender.com/api/v1/events
@@ -8446,9 +8447,10 @@
                   <div id=collapse-Event-CreateEvent class="panel-collapse collapse">
                     <div class=panel-body>
                       <h5 class="label label-primary">Body</h5><span class=resp-prettyprint>{
-                        &#34;description&#34;: &#34;Sed ante. Vivamus tortor. Duis mattis egestas metus. Aenean
-                        fermentum. Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget,
-                        eleifend luctus, ultricies eu, nibh. Quisque id justo sit amet sapien dignissim
+                        &#34;description&#34;: &#34;Sed ante. Vivamus tortor. Duis mattis
+                        egestas metus. Aenean fermentum. Donec ut mauris eget massa tempor
+                        convallis. Nulla neque libero, convallis eget, eleifend luctus,
+                        ultricies eu, nibh. Quisque id justo sit amet sapien dignissim
                         vestibulum.&#34;,
                         &#34;dayOfWeek&#34;: &#34;monday&#34;
                         }</span>
@@ -8473,11 +8475,11 @@
                 <div class="panel panel-danger" id=jump-Event-DeleteEventFromDayofWeek>
                   <div class=panel-heading><small class="pull-right text-muted"></small><a class=text-danger
                       data-toggle=collapse data-parent=#accordion-Event href=#collapse-Event-DeleteEventFromDayofWeek>
-                      <h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Delete Event From Day
-                          of Week</strong> &nbsp;|&nbsp;
+                      <h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Delete Event From
+                          Day of Week</strong> &nbsp;|&nbsp;
                         <strong class="request-method border-danger">DELETE</strong>
                         &nbsp;
-                        https://crud-of-events.onrender.com/api/v1/events/sunday
+                        https://crud-of-events.onrender.com/api/v1/events/day/tuesday
                       </h4>
                     </a></div>
                   <div id=collapse-Event-DeleteEventFromDayofWeek class="panel-collapse collapse">
@@ -8501,8 +8503,8 @@
                 <div class="panel panel-danger" id=jump-Event-DeleteEvent>
                   <div class=panel-heading><small class="pull-right text-muted"></small><a class=text-danger
                       data-toggle=collapse data-parent=#accordion-Event href=#collapse-Event-DeleteEvent>
-                      <h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Delete Event</strong>
-                        &nbsp;|&nbsp;
+                      <h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Delete
+                          Event</strong> &nbsp;|&nbsp;
                         <strong class="request-method border-danger">DELETE</strong>
                         &nbsp;
                         https://crud-of-events.onrender.com/api/v1/events/64ecd702c0a714101fd59f93
@@ -8570,6 +8572,9 @@
                       <h5 class="label label-primary">Body</h5><span class=resp-prettyprint>{
                         &#34;email&#34;: &#34;klaus@gmail.com&#34;,
                         &#34;password&#34;: &#34;originalsecret&#34;
+                        // damon@gmail.com, tvdsecret, 64e99aa9010d4e895ab1c1d9
+                        // klaus@gmail.com, originalsecret, 64e99b09010d4e895ab1c1db
+                        // test@gmail.com, secret, 64eb0ffad2311791b75bd46c
                         }</span>
                       <div class=clearfix></div>
                     </div>
@@ -8582,13 +8587,13 @@
       </div>
     </div>
   </div>
-  <script src="./browserApp.js"></script>
+  <script src="browserApp.js"></script>
   <br><br>
   <footer class="navbar-default navbar-fixed-bottom">
     <div class=container-fluid>
       <div class="span12 text-center"><span data-toggle=tooltip
           title="If the application help you, please feel free to give a star to the project in github. Your star inspire me to work more on open-source projects like this!">Generated
-          at 2023-09-01 08:05:53 by <a href=https://github.com/thedevsaddam/docgen target=_blank
+          at 2023-09-02 13:09:40 by <a href=https://github.com/thedevsaddam/docgen target=_blank
             class=text-muted>docgen</a></span></div>
     </div>
   </footer>
