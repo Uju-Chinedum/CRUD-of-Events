@@ -11,10 +11,10 @@ Befor running the application, make sure you [Node.js (v12 or higher)](https://n
 ## Installation
 
 1. Clone this repository using Git\
-   `git clone https://github.com/Uju-Chinedum/CRUD-of-Event.git`
+   `git clone https://github.com/Uju-Chinedum/CRUD-of-Events.git`
 
 2. Navigate to the project directory\
-   `cd CRUD-of-Account`
+   `cd CRUD-of-Events`
 
 3. Install the required dependencies\
    `npm install`
