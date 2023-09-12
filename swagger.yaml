@@ -35,7 +35,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /day/{dayOfWeek}:
+  /events/day/{dayOfWeek}:
     parameters:
       - name: dayOfWeek
         in: path
